@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Node structure for the linked list
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to traverse the linked list and print its elements
+void printLinkedList(struct Node* head) {
+    struct Node* current = head;
+
+    printf("Linked List elements: ");
+    while (current != NULL) {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    // Creating nodes for the linked list
+    struct Node* head = NULL;
+    struct Node* second = NULL;
+    struct Node* third = NULL;
+
+    // Allocate memory for nodes
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+
+    // Assign data and pointers
+    head->data = 1;
+    head->next = second;
+
+    second->data = 2;
+    second->next = third;
+
+    third->data = 3;
+    third->next = NULL;
+
+    // Traverse and print the linked list elements
+    printLinkedList(head);
+
+    // Free allocated memory
+    free(head);
+    free(second);
+    free(third);
+
+    return 0;
+}
